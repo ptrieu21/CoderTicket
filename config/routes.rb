@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :events do
     resources :tickets
+    resources :orders
   end
   get "upcoming", to: "events#index"
 end
