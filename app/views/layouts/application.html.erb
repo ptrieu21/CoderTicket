@@ -7,32 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <a class="navbar-brand" href="<%= root_path %>">Coder Ticket</a>
+      <ul class="nav navbar-nav">
+      <% unless user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
+        </li>
 
-  <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-    <a class="navbar-brand" href="<%= root_path %>">Coder Ticket</a>
-    <ul class="nav navbar-nav">
-    <% unless user_signed_in? %>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_session_path %>">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= new_user_registration_path %>">Sign Up</a>
-      </li>
+      <% else %>
 
-    <% else %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= destroy_user_session_path %>">Sign Out</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= orders_path %>">Your order</a>
+        </li>
 
-      <li class="nav-item">
-        <a class="nav-link" href="<%= destroy_user_session_path %>">Sign Out</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="<%= orders_path %>">Your order</a>
-      </li>
+      <% end %>
+      </ul>
+    </nav>  
+  </header>
 
-    <% end %>
-    </ul>
-  </nav>  
-
-<%= yield %>
-
+  <main>
+    <%= yield %>
+  </main>
 </body>
 </html>

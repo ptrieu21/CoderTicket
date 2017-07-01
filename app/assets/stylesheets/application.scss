@@ -8,7 +8,6 @@
 @import "nav";
 @import "events";
 @import "tickets";
-@import "users";
 
 body {
   font-family: 'Open Sans';
@@ -18,3 +17,10 @@ body {
   border: 2px solid rgb(241, 112, 91);
 }
 
+main {
+	padding-top: 54px;
+}
+
+.container {
+	padding-top: 20px;
+}
