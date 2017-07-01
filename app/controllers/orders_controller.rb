@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
 	before_action :authenticate_user!
-	before_action :set_ticket
+	before_action :set_ticket, only: [:new, :create]
 
 	def new
 		@orders = []
@@ -16,7 +16,12 @@ class OrdersController < ApplicationController
 			end
 		end
 
-		redirect_to root_path
+		redirect_to orders_path
+	end
+
+	def index
+		@orders = current_user.orders
+
 	end
 
 	private 

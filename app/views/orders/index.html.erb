@@ -1,0 +1,30 @@
+<div class="container-fluid tickets-buy">
+  <div class="row tickets-header">
+    <div class="col-xs-12 col-md-11 col-md-offset-1">
+      <h3></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-11 col-md-offset-1">  
+      <table class="table">
+        <th> Ticket Type </th>
+        <th> Unit Price </th>
+        <th> Quantity </th>
+      
+        <% @orders.each do |order| %>
+        <tr>
+          <td> <%= order.ticket_type.name %> </td>
+          <td> <%= number_to_currency(order.ticket_type.price, unit: 'VND ', precision: 0) %> </td>
+          <td> <%= order.quantity %></td> 
+        </tr>
+        <% end %> 
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-2 col-md-offset-5">
+      <h4>Total: <%= number_to_currency(current_user.total_price, unit: 'VND ', precision: 0) %></h4>
+    </div>
+  <div>
+</div>  
+
