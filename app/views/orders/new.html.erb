@@ -37,7 +37,7 @@
         <tr>
           <td> <%= f.object.ticket_type.name %> </td>
           <td> <%= number_to_currency(f.object.ticket_type.price, unit: 'VND ', precision: 0) %> </td>
-          <td> <%= f.select(:quantity, options_for_select(0..10)) %></td> 
+          <td> <%= f.select(:quantity, options_for_select(0..f.object.ticket_type.avaiable_select), {}, {class: "form-control"}) %></td> 
         </tr>
       <% end %> 
     <% end %> 

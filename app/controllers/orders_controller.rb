@@ -11,14 +11,17 @@ class OrdersController < ApplicationController
 
 	def create
 		params["orders"].each do |order|
-			if order["quantity"].to_i > 0
+			Order.new()
+			if order["quantity"].to_i > 0 
 				Order.create(order_params(order))
 			end
 		end
 
+		
 		UserMailer.order_email(current_user).deliver
 		flash[:success] = "Orders were successfully created!"
 		redirect_to orders_path
+
 	end
 
 	def index
