@@ -42,6 +42,8 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem "letter_opener", :group => :development
 # Use Unicorn as the app server
 # gem 'unicorn'
 
