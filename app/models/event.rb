@@ -6,6 +6,24 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :extended_html_description, :venue, :category, :starts_at, :name, :ends_at
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
+  validate :ends_at_must_after_starts_at, on: :create, if: :starts_at && :ends_at
+  validate :event_cannot_be_in_the_past, on: :create, if: :starts_at && :ends_at
+
+  def event_cannot_be_in_the_past
+  	if starts_at < Time.now
+  		errors.add(:starts_at, "can't be in the past")
+  	end
+
+  	if ends_at < Time.now
+  		errors.add(:ends_at, "can't be in the past")
+  	end
+  end
+
+  def ends_at_must_after_starts_at
+  	if starts_at > ends_at
+  		errors.add(:ends_at, "must after starts at")
+  	end
+  end
 
   def self.upcoming
   	where("ends_at > ? AND publish_at is NOT NULL", Time.now)
@@ -16,9 +34,10 @@ class Event < ActiveRecord::Base
   end
 
   def publish
-  	validates_presence_of :ticket_types
-  	self.publish_at = Time.now.strftime("%d-%m-%Y %H:%M:%S")
-  	self.save
+  	if self.ticket_types.any?
+	  	self.publish_at = Time.now.strftime("%d-%m-%Y %H:%M:%S")
+	  	self.save
+	  end
   end
 
   def unpublish

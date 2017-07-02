@@ -12,7 +12,8 @@ class TicketsController < ApplicationController
       flash[:success] = "Ticket was successfullty created!"
       redirect_to new_event_ticket_path(@event)
     else
-      render 'new'
+      flash[:error] = "Oops, something wrong with your ticket, make sure price and quantity is numberic"
+      redirect_to new_event_ticket_path(@event)
     end
   end
 

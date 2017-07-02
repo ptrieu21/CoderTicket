@@ -1,0 +1,29 @@
+
+
+<div class="container">
+	<h1>New venue</h1>
+	<%= render 'shared/errors', obj: @venue %>
+	<%= form_for @venue do |f| %>
+		<div class="form-group">
+		<%= f.label :name %>
+		<%= f.text_field :name, class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :full_address %>
+		<%= f.text_area :full_address,  class: "form-control" %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :region %>
+		<%= f.select(:region_id, Region.all.collect { |c| [c.name, c.id]}, {}, {:class => "form-control"}) %>
+	</div>
+
+
+	<div class="row">
+    <div class="col-md-3">
+			<%= f.submit "New venue", class: "btn btn-success btn-block" %>
+		</div>
+	</div>
+	<% end %>
+</div>

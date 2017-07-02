@@ -158,3 +158,5 @@ e = Event.create({
   DESC
 })  
 e.ticket_types << TicketType.create(name: 'General', price: 99000, max_quantity: 1000)
+
+Event.all.each {|e| e.publish}

@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :venues, only: [:new, :create]
+
   
 
   get "my_event", to: "events#my_event"

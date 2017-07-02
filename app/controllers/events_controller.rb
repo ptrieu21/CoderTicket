@@ -19,7 +19,9 @@ class EventsController < ApplicationController
   end
 
   def publish
-  	@event.publish
+  	if !@event.publish
+  		flash[:error] = "Event must have at least one ticket types"
+  	end
   	redirect_to my_event_path
   end
 
@@ -71,7 +73,7 @@ class EventsController < ApplicationController
 
   	def require_same_user
   		if current_user != @event.user 
-  			flash[:danger] = "Not authenticated!"
+  			flash[:error] = "Not authenticated!"
   			redirect_to root_path
 
   		end
