@@ -95,5 +95,5 @@ Rails.application.configure do
     :authentication     => :plain,
     :user_name          => 'trieutestmail@gmail.com',
     :password           => 'vuongtrieulk123'
-
+  }
 end
