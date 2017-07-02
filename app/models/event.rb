@@ -7,17 +7,6 @@ class Event < ActiveRecord::Base
   validates_presence_of :extended_html_description, :venue, :category, :starts_at, :name, :ends_at
   validates_uniqueness_of :name, uniqueness: {scope: [:venue, :starts_at]}
   validate :ends_at_must_after_starts_at, on: :create, if: :starts_at && :ends_at
-  validate :event_cannot_be_in_the_past, on: :create, if: :starts_at && :ends_at
-
-  def event_cannot_be_in_the_past
-  	if starts_at < Time.now
-  		errors.add(:starts_at, "can't be in the past")
-  	end
-
-  	if ends_at < Time.now
-  		errors.add(:ends_at, "can't be in the past")
-  	end
-  end
 
   def ends_at_must_after_starts_at
   	if starts_at > ends_at

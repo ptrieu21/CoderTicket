@@ -43,6 +43,10 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+
+gem 'factory_girl'
+gem "factory_girl_rails", "~> 4.0"
+
 gem "letter_opener", :group => :development
 # Use Unicorn as the app server
 # gem 'unicorn'
