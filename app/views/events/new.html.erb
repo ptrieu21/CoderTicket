@@ -1,38 +1,10 @@
 
 
 <div class="container">
-<h2> New Event</h2>
-
-<%= form_for :event, html: { class: "new-event"} do |f| %>
-	<div class="form-group">
-		<%= f.label :name %>
-		<%= f.text_field :name, class: "form-control" %>
-	</div>
-
-	<div class="form-group">
-		<%= f.label :hero_image_url %>
-		<%= f.text_field :hero_image_url, class: "form-control" %>
-	</div>
-
-	<div class="form-group">
-		<label>Description</label>
-		<%= f.text_area :hero_image_url, class: "form-control" %>
-	</div>
-
-	<div class="form-group">
-		<%= f.lable :starts_at %>
-		<%= f.text_area :hero_image_url, class: "form-control" %>
-	</div>
-
-<% end %>
+	<%= render 'form' %>
 </div>
 
-t.datetime "starts_at"
-    t.datetime "ends_at"
-    t.integer  "venue_id"
-    t.string   "hero_image_url"
-    t.text     "extended_html_description"
-    t.integer  "category_id"
-    t.string   "name"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+<script type="text/javascript">
+$('#event_starts_at').datetimepicker({format: 'DD-MM-YYYY HH:mm'});
+ $('#event_ends_at').datetimepicker({format: 'DD-MM-YYYY HH:mm'});
+</script>

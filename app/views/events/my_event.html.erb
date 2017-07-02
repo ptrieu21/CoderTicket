@@ -1,0 +1,30 @@
+<div class="container">
+	<table class="table">
+	  <thead class="thead-inverse">
+	    <tr>
+	      <th>Name</th>
+	      <th>Action</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <% @events.each do |event| %>
+	     	<tr>
+				  <td><%= event.name %></td>
+				  <td>
+				  	<% if event.published? %>
+				    	<%= button_to "unpublish", {:controller => :events,
+				    :action => 'unpublish', :id => event.id }, :method => :post, class: "btn btn-danger" %>
+				   	<% else %>
+				   		<%= button_to "publish", {:controller => :events,
+				    :action => 'publish', :id => event.id }, :method => :post, class: "btn btn-success" %>
+				   	<% end %>
+
+				   	<%= button_to "Edit", {:controller => :events,
+				    :action => 'edit', :id => event.id }, :method => :get, class: "btn btn-primary" %>
+				    	
+				  </td>
+				</tr>
+	    <% end %>
+	  </tbody>
+	</table>
+</div>

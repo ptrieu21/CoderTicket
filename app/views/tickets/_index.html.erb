@@ -1,0 +1,21 @@
+<table class="table">
+  <thead class="thead-inverse">
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Max Quantity</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tickets.each do |ticket| %>
+    <tr>
+      <td><%= ticket.name %></td>
+      <td><%= number_to_currency(ticket.price, unit: 'VND ', precision: 0) %></td>
+      <td><%= ticket.max_quantity %></td>
+      <td><%= button_to "remove", {:controller => :tickets,
+      :action => 'destroy', :id => ticket.id }, :method => :delete, class: "btn btn-danger" %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

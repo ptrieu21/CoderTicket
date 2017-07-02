@@ -21,13 +21,22 @@
 
       <% else %>
 
+       
+        <li class="nav-item">
+          <a class="nav-link" href="<%= orders_path %>">My order</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_event_path %>">New event</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="<%= my_event_path %>">My event</a>
+        </li>
+
         <li class="nav-item">
           <a class="nav-link" href="<%= destroy_user_session_path %>">Sign Out</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="<%= orders_path %>">Your order</a>
-        </li>
-
       <% end %>
       </ul>
     </nav>  

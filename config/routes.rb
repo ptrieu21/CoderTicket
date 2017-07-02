@@ -6,7 +6,14 @@ Rails.application.routes.draw do
   resources :events do
     resources :tickets
     resources :orders, only: [:new, :create]
+    member do
+      post 'publish'
+      post 'unpublish'
+    end
   end
 
+  
+
+  get "my_event", to: "events#my_event"
   get "upcoming", to: "events#index"
 end
