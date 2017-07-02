@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
 	before_action :authenticate_user!, except: [:index, :show]
-	before_action :set_event, except: [:index, :show, :new, :create, :my_event]
+	before_action :set_event, except: [:index, :new, :create, :my_event]
 	before_action :require_same_user, except: [:index, :show, :my_event, :new, :create]
 	 
 

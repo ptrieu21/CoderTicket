@@ -40,6 +40,8 @@ gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
